@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring/SpringMVC,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这确实是一个大问题？？？想想自己在学校学习了Java web开发的课程也有许久，可是总是进行着模板式的开发工作，并没有深入探究Java web的开发框架，像我们普遍使用的 Spring/SpringMVC。作为一枚开发小白，我确实和大多数人一样，在一种错误的开发模式下越走越远，sevlet+jsp闯天下（哈哈哈）。这种开发模式确实可以应对我们在高校课堂里面所面对的功能需求，而且我们自己也用的乐此不">
+<meta name="keywords" content="Spring&#x2F;SpringMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Web开发为什么要使用Spring&#x2F;SpringMVC?">
+<meta property="og:url" content="http://yoursite.com/2019/05/21/Java-Web开发为什么要使用Spring-SpringMVC/index.html">
+<meta property="og:site_name" content="Big Fly&#39;Blog">
+<meta property="og:description" content="这确实是一个大问题？？？想想自己在学校学习了Java web开发的课程也有许久，可是总是进行着模板式的开发工作，并没有深入探究Java web的开发框架，像我们普遍使用的 Spring/SpringMVC。作为一枚开发小白，我确实和大多数人一样，在一种错误的开发模式下越走越远，sevlet+jsp闯天下（哈哈哈）。这种开发模式确实可以应对我们在高校课堂里面所面对的功能需求，而且我们自己也用的乐此不">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-21T11:35:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Web开发为什么要使用Spring&#x2F;SpringMVC?">
+<meta name="twitter:description" content="这确实是一个大问题？？？想想自己在学校学习了Java web开发的课程也有许久，可是总是进行着模板式的开发工作，并没有深入探究Java web的开发框架，像我们普遍使用的 Spring/SpringMVC。作为一枚开发小白，我确实和大多数人一样，在一种错误的开发模式下越走越远，sevlet+jsp闯天下（哈哈哈）。这种开发模式确实可以应对我们在高校课堂里面所面对的功能需求，而且我们自己也用的乐此不">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/21/Java-Web开发为什么要使用Spring-SpringMVC/">
+
+
+
+
+
+  <title>Java Web开发为什么要使用Spring/SpringMVC? | Big Fly'Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+ <a href="https://github.com/hpf000">
+<img width="149" height="149" style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
+</a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Big Fly'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">木叶飞舞之处，火亦生生不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/Java-Web开发为什么要使用Spring-SpringMVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pengfei Huang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Big Fly'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java Web开发为什么要使用Spring/SpringMVC?</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T13:41:45+08:00">
+                2019-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java-web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">java web开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="这确实是一个大问题？？？"><a href="#这确实是一个大问题？？？" class="headerlink" title="这确实是一个大问题？？？"></a>这确实是一个大问题？？？</h1><p>想想自己在学校学习了Java web开发的课程也有许久，可是总是进行着模板式的开发工作，并没有深入探究Java web的开发框架，像我们普遍使用的 <strong>Spring/SpringMVC</strong>。作为一枚开发小白，我确实和大多数人一样，在一种错误的开发模式下越走越远，sevlet+jsp闯天下（哈哈哈）。这种开发模式确实可以应对我们在高校课堂里面所面对的功能需求，而且我们自己也用的乐此不疲，殊不知这种开发所带来的漏洞以及开发效率问题是我们未涉及到企业级项目开发所能认识到的。<br><del>目前我自己的开发流程就是这样</del> ，在Eclipse开发平台新建一个动态web项目，将别人写好的加载数据库的类copy到自己的项目当中（假装分离了业务逻辑…），新建一个login.jsp页面，再新建一个logincheck.jsp页面，最后频繁的在jsp页面写代码，一个登录校验的功能就实现了。不过刚开始学习确实是这样进行的没错了。<br>估计在未来的某一天，当你站在某位面试官的面前，突然被问及Java开发web项目为什么要用Spring，SpringMVC，哇！！！两眼懵逼的站着。。。<br>那么为什么现在的Java web开发要用Spring这样的框架呢？特别是现在我们web前端的页面都是使用freemaker这样的模板语言进行开发，抛弃了jsp。同时，很多Java企业级开发都会去选择Spring框架，这样的选择又会给我们的Java web开发带来怎样的好处，这种种的问题都是我们在学习的过程当中应该去了解的。<br>目前，确实有许多优秀的开发框架，有一种类型的框架，它的特点是建立在一个现有技术的基础上，提供和现有技术一样的业务功能的技术框架，这个新的技术框架比原技术更加易用，更加健壮的同时功能也更加强大，例如我们经常使用的jQuery，以及上面提到的Spring/SpringMVC，深究这些框架都是很复杂的，但是它们的优点其实只有一个：<strong>让使用者只关心核心业务的开发，框架来帮你屏蔽原有技术跟业务开发无关的各类技术问题。</strong>像jQuery，SpringMVC这类框架之所以优秀，就是它们在这点上做的太好了，以至于使用它们的程序员已经不清楚原有技术的真实面目，因此我们要将SpringMVC理解的更好，使用的更加熟练和深入，我们就要跳出SpringMVC的技术，到其源头servlet，仔细研究一下servlet的特点，这样我们才能把SpringMVC框架学的更好。</p>
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><p>先讲讲servlet：<br>servlet的作用就是是接收浏览器传给服务端的请求（request），并将服务端处理完的响应（response）返回给用户的浏览器，浏览器和服务端之间通过http协议进行沟通，其过程是浏览器根据用户的选择将相关信息按http协议报文的规范组装成一组请求的http报文，报文通过网络传输到指定的服务器，服务器通过特定的web容器接收这个报文信息，例如tomcat，jetty，jboss这样的web容器，web容器会将http报文解析出来，如果是用户请求，最终解析出来的报文信息会用一个request对象存储起来，服务端使用这个request做完相应的处理后，服务端程序将结果信息封装到response对象里，然后将response对象交给web容器，web容器则把这个response对象转变为http协议的报文，并将报文回传给浏览器，浏览器最后解析这个响应报文，将最终结果展示给用户。<br>Web容器创造了servlet接口，servlet接口就是开发人员自己实现业务逻辑的地方，程序员开发servlet就好比做填空题，而填空题的语境或者说上下文提示就是request和response对象，但是java EE规范里的servlet接口很简单，就三个方法init，service和destory，但是这个接口太笼统了，所以规范里还提供了一个HttpServlet类（这个是最经常使用的），这个类根据http请求类型提供了doGet，doPost等方法，servlet接口最大的特点就是根据http协议的特点进行定义，因此做servlet开发时候如果使用者对http协议特点不是特别熟悉，或多或少都会碰到一些问题，特别是碰到一些复杂特殊的请求问题的时候，例如文件上传，返回特殊的文件格式到浏览器，这时候使用servlet开发就不是很方便了。servlet开发还有个问题可能常常被大家忽略，就是请求的数据的类型转化，http协议传输都是文本形式，到了web容器解析后也是文本类型，如果碰到货币，数字，日期这样的类型需要我们根据实际情况进行转化，如果页面传送的信息非常多，我们就不得不做大量类型转化，这种工作没有什么技术含量，是个体力活而且很容易导致程序错误。<br>servlet另一个作用就是构造response对象，让页面获得正确的响应，现代的浏览器其实就是一个多媒体工具，文字，图片，视频等等东西都可以在浏览器里显示，资源的不同就会导致http响应报文的差别，如果我们使用servlet开发就要根据资源的不同在java程序里用硬编码的形式处理，这样的程序很难复用，而且如果程序员对某种资源的处理理解不到位，就会导致问题的出现。<br>在SpringMVC （Controller+Model+View）中，控制器Controller 负责处理由DispatcherServlet （前置控制器，配置在web.xml中）分发的请求，它把用户请求的数据经过业务处理层处理之后封装成一个Model ，然后再把该Model 返回给对应的View 进行展示。在SpringMVC 中提供了一个非常简便的定义Controller 的方法，你无需继承特定的类或实现特定的接口，只需使用@Controller 标记一个类是Controller ，然后使用@RequestMapping 和@RequestParam 等一些注解用以定义URL 请求和Controller 方法之间的映射，这样的Controller 就能被外界访问到。此外Controller 不会直接依赖于HttpServletRequest 和HttpServletResponse 等HttpServlet 对象，它们可以通过Controller 的方法参数灵活的获取到。<br>servlet里还有两个重要的技术：监听器和过滤器，对于监听器在web开发里使用的场景比较少，都是一些十分特别的情况才会使用，大部分web开发里可以忽略它的使用，我们用的最多的监听器可能就是对ServletContext创建和销毁的监听器，ServletContext是整个web应用的全局对象，它和Web应用的生命周期绑定在一起，因此使用这个监听器对Web应用的全局信息进行初始化和销毁操作，例如spring容器的初始化操作。而过滤器方面，使用SpringMVC拦截器和Struts2一样，Spring MVC也可以使用拦截器对请求进行拦截处理，用户可以自定义拦截器来实现特定的功能，自定义的拦截器必须实现HandlerInterceptor接口。</p>
+<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p>下面再谈谈spring：<br>spring技术可以说是java企业开发里最重要的技术，不过真的理解spring的作用和意义还真是一件麻烦的事情，很多人对spring理解其实都是停留在使用阶段（例如：声明式事务很好用等等），当今的spring技术生态环境里可谓是蔚为壮观，spring已经包罗万象，它的内容之多完全不亚于它的本源java语言了，而spring这么大的框架都是建立在<strong>ioc</strong>和<strong>aop</strong>技术之上，只有深入理解了这两个技术我们才能明白为什么spring这个框架能装的下那么多东西了。首先是ioc，ioc技术第一个解释叫做控制反转，它还有个解释就是依赖注入，这两个名字很难从字面理解，但是当你理解它的原理后就会发现它们的描述是何等准确。ioc技术的本质就是构建对象的技术，换句话说就是将一个类实例化成对象的技术，在java里实例化类通过new关键字进行的，每次new一个类都会产生一个新的实例对象，这么做视乎很浪费，有时这种浪费还挺危险，因为在程序开发时候我们常常只需要某个类永远只能产生一个对象，实例对象这个时候就得使用单例模式，此外在设计模式里还可以通过工厂方式产生对象，使用过spring的人看到上面的文字就知道了，spring里bean的定义就和上面的内容一一对应，scope属性single产生单例对象，prototype产生新对象，bean还可以通过工厂方式产生对象，可以说spring的bean就是制造对象的工具。面向对象编程里对象相当于显示生活中的一个实体，例如我们有个对象作用是完成打猎的操作，那么打猎这个对象内部包含两个辅助对象：人和枪，只有人和枪赋予了打猎这个对象，那么打猎对象才能完成打猎的操作，但是构建一个人和枪的对象并不是看起来那么简单，这里以枪为例，要创造一把枪我们需要金属，需要机床，需要子弹，而机床和子弹又是两个新对象，这些对象一个个相互嵌套相互关联，大伙试想下如果我们在java代码里构建一个枪的对象那是何其的复杂，假如我们要构造的不是简单的枪对象而是更加复杂的航空母舰，那么构造这个对象的成本之高是让人难以想象的，怎么来消除这种对象相互嵌套相互依赖的关系了？spring提供了一种方式，这种方式就是spring提供一个容器，我们在xml文件里定义各个对象的依赖关系，由容器完成对象的构建，当我们java代码里需要使用某个实例的时候就可以从容器里获取，那么对象的构建操作就被spring容器接管，所以它被称为控制反转，控制反转的意思就是本来属于java程序里构建对象的功能交由容器接管，依赖注入就是当程序要使用某个对象时候，容器会把它注入到程序里，这就叫做依赖注入。在java开发里我们想使用某个类提供的功能，有两种方式，一种就是构造一个新的类，新的类继承该类，另一种方式则是将某个类定义在新类里，那么两个类之间就建立一种关联关系，spring的ioc容器就是实现了这种关联关系（记住不是继承关系哦），那么某个类要被赋予到新类有哪些办法呢？一般只有两种：一种就是通过构造函数，一种就是通过setXXX方式，这也是spring容器使用到了两种标准的注入方式。<br>不管是上面说的继承方式，还是关联方式其实都是增强目标对象能力的开发手段，在设计模式里有一种代理模式，代理模式将继承模式和关联模式结合在一起使用，代理模式就是继承模式和关联模式的综合体，不过这个综合体的作用倒不是解决对象注入的问题，而是为具体操作对象找到一个保姆或者是秘书，这就和小说里的二号首长一样，这个二号首长对外代表了具体的实例对象，实例对象的入口和出口都是通过这个二号首长，因为具体的实例对象是一号首长，一号首长是要干大事的，所以一些事务性，重复性的工作例如泡茶，安排车子，这样的工作是不用劳烦一号首长的大驾，而是二号首长帮忙解决的，这就是aop的思想，aop解决程序开发里事务性，和核心业务无关的问题，但这些问题对于业务场景的实现是很有必要的，在实际开发里aop也是节省代码的一种方式。<br> Spring的核心技术的作用本质就是一个沟通机制，spring总是尽全力的让沟通的双方信息畅通，同时降低双方的沟通成本，在现实机构里一个善于沟通的人肯定是该公司的领导，很会沟通的领导能调动起各种资源的积极性，善于沟通的领导就会做到海纳百川，让各种不同人追随他，所以当今的spring就是一个大框架，什么都可以往里装。<br>Spring很像银行，它不能直接创造物质财富，但是一切资源都要通过它进行流通，它能控制经济发展的走向，回到程序的世界，spring的作用是被标榜为程序之间的解耦，spring能降低不同模块之间的耦合度，原因就是在程序开发里不同模块之间信息的沟通是通过对象传递完成的，而对象能否顺利传递就是要合理的构建好对象，而管理好对象的构建方式就能管理好对象传递，这就是spring给系统架构设计带来的好处。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>原创技术分享，求打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Pengfei Huang 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Pengfei Huang 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Pengfei Huang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/05/21/Java-Web开发为什么要使用Spring-SpringMVC/" title="Java Web开发为什么要使用Spring/SpringMVC?">http://yoursite.com/2019/05/21/Java-Web开发为什么要使用Spring-SpringMVC/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-SpringMVC/" rel="tag"># Spring/SpringMVC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/20/Spring-Boot基础-入门/" rel="next" title="Spring Boot基础+入门">
+                <i class="fa fa-chevron-left"></i> Spring Boot基础+入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/22/第一次面试（嘿嘿嘿）/" rel="prev" title="第一次面试（嘿嘿嘿）">
+                第一次面试（嘿嘿嘿） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.png" alt="Pengfei Huang">
+            
+              <p class="site-author-name" itemprop="name">Pengfei Huang</p>
+              <p class="site-description motion-element" itemprop="description">一个不正经的程序猿</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hpf000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:huangpengfei163@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hpfworking.cn/" title="wordpress博客" target="_blank">wordpress博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://vosamo.cn/" title="老邓の博客" target="_blank">老邓の博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/Crystal_viv" title="胖胖の博客" target="_blank">胖胖の博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这确实是一个大问题？？？"><span class="nav-number">1.</span> <span class="nav-text">这确实是一个大问题？？？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet"><span class="nav-number">1.1.</span> <span class="nav-text">servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.2.</span> <span class="nav-text">Spring</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pengfei Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">鄂ICP备 <a class="theme-link" target="_blank" href="http://www.miitbeian.gov.cn/">17030157号-1</a> </div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
