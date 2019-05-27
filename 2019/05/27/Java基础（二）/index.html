@@ -88,7 +88,7 @@
 <meta property="og:description" content="Java是一种强类型语言，这意味着所有变量都必须先明确定义其数据类型才能使用。Java语言的数据类型有两类：基本数据类型与引用类型。基本数据类型包括：boolean（布尔型）、byte（字节型）、short（短整型）、int（整型）、long（长整型）、char（字符型）、float（单精度浮点型）、double（双精度浮点型）共8种。其余为引用类型，例如数组、字符串、类、接口、用户自定义类型等。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/05/27/Java基础（二）/1.JPG">
-<meta property="og:updated_time" content="2019-05-27T06:44:33.184Z">
+<meta property="og:updated_time" content="2019-05-27T06:50:47.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础（二）">
 <meta name="twitter:description" content="Java是一种强类型语言，这意味着所有变量都必须先明确定义其数据类型才能使用。Java语言的数据类型有两类：基本数据类型与引用类型。基本数据类型包括：boolean（布尔型）、byte（字节型）、short（短整型）、int（整型）、long（长整型）、char（字符型）、float（单精度浮点型）、double（双精度浮点型）共8种。其余为引用类型，例如数组、字符串、类、接口、用户自定义类型等。">
@@ -363,7 +363,78 @@
 
       
         <p>Java是一种强类型语言，这意味着所有变量都必须先明确定义其数据类型才能使用。Java语言的数据类型有两类：基本数据类型与引用类型。基本数据类型包括：boolean（布尔型）、byte（字节型）、short（短整型）、int（整型）、long（长整型）、char（字符型）、float（单精度浮点型）、double（双精度浮点型）共8种。其余为引用类型，例如数组、字符串、类、接口、用户自定义类型等。<strong>所有基本数据类型的大小（所占字节数）都有明确规定，在各种不同平台上保持一致，这点有助于提高Java程序的可移植性。</strong><br><img src="/2019/05/27/Java基础（二）/1.JPG"><center>Java数据类型</center><br>各基本数据类型的大小及取值范围，如下表所示：</p>
-<p><center><strong>基本数据类型的大小及取值范围</strong></center><br>数据类型 | 关键字 | 在内存占用的字节数 | 取值范围 | 默认值<br>:-: | :-: | :-: | :-: | :-:<br>布尔型 | boolean | 1个字节（8位） | true、false | false|<br>字节型 | byte | 1个字节（8位） | -128~127 | (byte)0|<br>短整型 | short | 2个字节（16位） | -215~215-1 | (short)0|<br>整型 | int | 4个字节（32位） | -231~231-1| 0|<br>长整型 | long | 8个字节（64位） | -263~263-1| 0L|<br>字符型 | char | 2个字节（16位） | ‘\u0000’| ‘\uffff’|<br>单精度浮点型 | float | 4个字节（32位） | 不详写| 0.0F|<br>双精度浮点型 | double | 1个字节（8位） | 不详写| 0.0D|<br>注意：Java的字符采用Unicode字符集的编码方式，是16位的无符号整数，表示的字符从0~65535。</p>
+<center><strong>基本数据类型的大小及取值范围</strong></center>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">关键字</th>
+<th style="text-align:center">在内存占用的字节数</th>
+<th style="text-align:center">取值范围</th>
+<th style="text-align:center">默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">布尔型</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">1个字节（8位）</td>
+<td style="text-align:center">true、false</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">字节型</td>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">1个字节（8位）</td>
+<td style="text-align:center">-128~127</td>
+<td style="text-align:center">(byte)0</td>
+</tr>
+<tr>
+<td style="text-align:center">短整型</td>
+<td style="text-align:center">short</td>
+<td style="text-align:center">2个字节（16位）</td>
+<td style="text-align:center">-215~215-1</td>
+<td style="text-align:center">(short)0</td>
+</tr>
+<tr>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4个字节（32位）</td>
+<td style="text-align:center">-231~231-1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">长整型</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">8个字节（64位）</td>
+<td style="text-align:center">-263~263-1</td>
+<td style="text-align:center">0L</td>
+</tr>
+<tr>
+<td style="text-align:center">字符型</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">2个字节（16位）</td>
+<td style="text-align:center">‘\u0000’</td>
+<td style="text-align:center">‘\uffff’</td>
+</tr>
+<tr>
+<td style="text-align:center">单精度浮点型</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4个字节（32位）</td>
+<td style="text-align:center">不详写</td>
+<td style="text-align:center">0.0F</td>
+</tr>
+<tr>
+<td style="text-align:center">双精度浮点型</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">1个字节（8位）</td>
+<td style="text-align:center">不详写</td>
+<td style="text-align:center">0.0D</td>
+</tr>
+</tbody>
+</table>
+<p>字符采用Unicode字符集的编码方式，是16位的无符号整数，表示的字符从0~65535。</p>
 
       
     </div>
