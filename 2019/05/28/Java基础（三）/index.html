@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算">
-<meta name="keywords" content="Java">
+<meta name="description" content="title: Java基础（三） date: 2019-05-28 10:56:06 tags: Javacategories: Java—#前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 ##运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算符用于处理整型、浮点型、字符型的数据，进行算术运">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础（三）">
+<meta property="og:title" content="Big Fly&#39;Blog">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/Java基础（三）/index.html">
 <meta property="og:site_name" content="Big Fly&#39;Blog">
-<meta property="og:description" content="前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算">
+<meta property="og:description" content="title: Java基础（三） date: 2019-05-28 10:56:06 tags: Javacategories: Java—#前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 ##运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算符用于处理整型、浮点型、字符型的数据，进行算术运">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-28T03:16:46.235Z">
+<meta property="og:updated_time" content="2019-05-28T04:01:53.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础（三）">
-<meta name="twitter:description" content="前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算">
+<meta name="twitter:title" content="Big Fly&#39;Blog">
+<meta name="twitter:description" content="title: Java基础（三） date: 2019-05-28 10:56:06 tags: Javacategories: Java—#前言 在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。 ##运算符 Java中表达各种运算的符号称为运算符，运算符的运算对象称为操作数。 1.算术运算符 算术运算符用于处理整型、浮点型、字符型的数据，进行算术运">
 
 
 
@@ -126,7 +125,7 @@
 
 
 
-  <title>Java基础（三） | Big Fly'Blog</title>
+  <title> | Big Fly'Blog</title>
   
 
 
@@ -283,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java基础（三）</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -305,28 +304,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -360,12 +337,46 @@
       
 
       
-        <p><code>前言</code></p>
+        <hr>
+<p>title: Java基础（三）</p>
+<p>date: 2019-05-28 10:56:06</p>
+<p>tags:<br> Java<br>categories: Java<br>—#前言</p>
 <p>在这章节我们主要来讨论一下Java的运算符和表达式问题，这两者可是实现数据操作的重要组成部分。</p>
-<p><code>运算符</code></p>
+<p>##运算符</p>
 <p>Java中表达各种运算的符号称为<b>运算符</b>，运算符的运算对象称为<b>操作数</b>。</p>
 <p>1.算术运算符</p>
-<p>算术运算</p>
+<p>算术运算符用于处理整型、浮点型、字符型的数据，进行算术运算。</p>
+<p>”+“做了重载（Java中唯一重载的符号）。例如”abc”+var_a，其中var_a可以是任何Java类型。</p>
+<p>“/“用于整型表示取整，例如2/3=0（这也是许多程序竞赛题目的坑！）；用于float、double表示实数相除。</p>
+<p>”%“用于整形表示取余数，并且结果的符号以%左边的符号一致，例如(-15)%2=-1;用于float、double表示实数取余，例如15.2%5=0.2。<b>需要注意的是这里跟C语言的不同之处，C语言只允许”%“操作符的操作数为整型</b>。</p>
+<p>2.关系运算符</p>
+<p>关系运算符用于比较两个操作数，，运算结果是布尔类型的值，即true或false。所有的关系运算符都是二目运算符。</p>
+<p>Java中共有六种关系运算符：&gt;、&gt;=、&lt;、&lt;=、!=、==。前四种优先级相同，且高于后面的两种。如a==b&gt;c等价于a==(b&gt;c)。</p>
+<p>注意：在Java中，任何类型的数据（无论是基本数据类型还是引用类型）都可以通过==或!=来比较是否相等或者不等。但是只有char、byte、short、int、long、float、double类型才能用于前四种关系运算。</p>
+<p>3.逻辑运算符</p>
+<p>Java中的逻辑运算符有：&amp;（与）、|（或）、！（非）、^（异或）、&amp;&amp;（短路与）、||（短路或）。</p>
+<p>4.位运算符</p>
+<p>位运算符是对操作数按其在计算机内部的二进制表示按位进行操作。参与的操作数只能是int、long类型，其他类型的数据要参与位运算要转换成这两种类型。</p>
+<ul>
+<li>按位求反运算符：~</li>
+<li>与运算符：&amp;</li>
+<li>或运算符：|</li>
+<li>异或运算符：^</li>
+<li>保留符号位的右移运算符：&gt;&gt;</li>
+<li>不保留符号位的右移运算符：&gt;&gt;&gt;</li>
+<li>左移运算符：&lt;&lt;</li>
+</ul>
+<p><code>结论：</code></p>
+<p>所有正整数的按位取反是其本身+1的负数 </p>
+<p>所有负整数的按位取反是其本身+1的绝对值 </p>
+<p>零的按位取反是 -1（0在数学界既不是正数也不是负数）</p>
+<p>5.赋值运算符</p>
+<p>在Java中赋值运算符”=“是一个双目运算符，结合方向从右向左，用于将赋值符号右边操作数的值赋给左边的变量，且这个值是整个赋值运算表达式的值。</p>
+<p>6.条件运算符</p>
+<p>条件运算符”?:“是三目运算符，其格式是：e1?e2:e3</p>
+<p>其中e1是一个布尔表达式，若e1的值为true，则计算表达式e2的值，否则计算e3的值，且计算的值为整个表达式的值。e2和e3需要返回相同或者兼容的数据类型，且该数据类型不能是void。</p>
+<p>##表达式</p>
+<p>表达式是符合一定语法规则的运算符和操作数的序列。一个常量、变量也可认为是一个表达式，该常量或变量的值即为整个表达式的值。一个合法的Java表达式经计算后，应该有一个确定的值和类型。唯一的例外是方法调用时，方法的返回值类型可以被定义为void。通常，不同运算符构成不同的表达式。</p>
 
       
     </div>
@@ -415,7 +426,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/05/28/Java基础（三）/" title="Java基础（三）">http://yoursite.com/2019/05/28/Java基础（三）/</a>
+    <a href="http://yoursite.com/2019/05/28/Java基础（三）/" title>http://yoursite.com/2019/05/28/Java基础（三）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -426,12 +437,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-        </div>
       
 
       
